@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Frédéric Lu — Finance · Transaction Services</title>
+<meta name="description" content="Frédéric Lu — Master's student in Finance (IMT-BS). Portfolio: Transaction Services due diligence and credit-risk modeling. Seeking a 6-month end-of-studies internship in Transaction Services / Financial Due Diligence." />
+
+<!-- Fonts (with robust system fallbacks if offline) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#0f2540;
+    --navy-2:#16365c;
+    --ink:#172234;
+    --slate:#56657a;
+    --muted:#7c8a9c;
+    --accent:#b08d57;        /* refined bronze/gold */
+    --accent-deep:#8a6d3f;
+    --link:#2c5b8f;
+    --bg:#ffffff;
+    --bg-alt:#f5f7fa;
+    --bg-navy-soft:#0f2540;
+    --line:#e3e9f0;
+    --card:#ffffff;
+    --shadow:0 1px 2px rgba(16,40,72,.04), 0 8px 28px rgba(16,40,72,.07);
+    --shadow-lg:0 12px 40px rgba(16,40,72,.14);
+    --serif:'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --maxw:1080px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:var(--serif); color:var(--navy); line-height:1.2; margin:0 0 .4em;}
+  h2{font-size:clamp(1.6rem,3.2vw,2.2rem);}
+  h3{font-size:1.25rem;}
+  p{margin:0 0 1rem;}
+  a{color:var(--link); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  img{max-width:100%;}
+  section{padding:5.5rem 1.5rem; scroll-margin-top:80px;}
+  .wrap{max-width:var(--maxw); margin:0 auto;}
+  .eyebrow{
+    font-family:var(--sans);
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:.72rem;
+    font-weight:600;
+    color:var(--accent-deep);
+    margin:0 0 .8rem;
+  }
+  .lead{font-size:1.08rem; color:var(--slate); max-width:60ch;}
+  .center{text-align:center;}
+  .center .lead{margin-left:auto; margin-right:auto;}
+
+  /* ===== NAV ===== */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:saturate(160%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:.85rem 1.5rem;
+    display:flex; align-items:center; gap:1rem;
+  }
+  .brand{
+    display:flex; align-items:center; gap:.6rem;
+    font-family:var(--serif); font-weight:700; color:var(--navy);
+    font-size:1.05rem; text-decoration:none;
+  }
+  .brand .mono{
+    display:inline-grid; place-items:center;
+    width:38px; height:38px; border-radius:9px;
+    background:var(--navy); color:#fff; font-size:.95rem; letter-spacing:.02em;
+  }
+  .nav-links{display:flex; gap:1.6rem; margin-left:auto; align-items:center;}
+  .nav-links a{
+    color:var(--slate); font-weight:500; font-size:.92rem; text-decoration:none;
+    padding:.3rem 0; position:relative;
+  }
+  .nav-links a:hover{color:var(--navy);}
+  .nav-actions{display:flex; align-items:center; gap:.7rem; margin-left:1.4rem;}
+
+  .lang-toggle{
+    display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden;
+    background:var(--bg-alt);
+  }
+  .lang-toggle button{
+    border:0; background:transparent; cursor:pointer;
+    font-family:var(--sans); font-weight:600; font-size:.8rem; color:var(--muted);
+    padding:.4rem .7rem;
+  }
+  .lang-toggle button.active{background:var(--navy); color:#fff;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:.5rem;
+    font-weight:600; font-size:.9rem; border-radius:8px;
+    padding:.6rem 1.05rem; cursor:pointer; border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    text-decoration:none;
+  }
+  .btn:hover{text-decoration:none; transform:translateY(-1px);}
+  .btn-primary{background:var(--navy); color:#fff;}
+  .btn-primary:hover{background:var(--navy-2);}
+  .btn-accent{background:var(--accent); color:#fff;}
+  .btn-accent:hover{background:var(--accent-deep);}
+  .btn-ghost{background:transparent; color:var(--navy); border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--navy); background:var(--bg-alt);}
+  .btn-sm{padding:.45rem .8rem; font-size:.82rem;}
+
+  .hamburger{display:none; background:none; border:0; cursor:pointer; padding:.4rem;}
+  .hamburger span{display:block; width:22px; height:2px; background:var(--navy); margin:4px 0; transition:.2s;}
+
+  /* ===== HERO ===== */
+  .hero{
+    background:
+      radial-gradient(1200px 500px at 80% -10%, rgba(176,141,87,.10), transparent 60%),
+      linear-gradient(180deg, #fbfcfe 0%, #ffffff 100%);
+    border-bottom:1px solid var(--line);
+    padding-top:4.5rem; padding-bottom:4.5rem;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.4fr .9fr; gap:3rem; align-items:center;}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.3rem); margin-bottom:.5rem;}
+  .hero .role{
+    font-family:var(--sans); font-weight:600; color:var(--accent-deep);
+    font-size:1.05rem; letter-spacing:.01em; margin-bottom:1.2rem;
+  }
+  .hero .lead{font-size:1.12rem; margin-bottom:1.8rem;}
+  .hero-cta{display:flex; flex-wrap:wrap; gap:.8rem; margin-bottom:1.6rem;}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:1.2rem; color:var(--muted); font-size:.88rem;}
+  .hero-meta span{display:inline-flex; align-items:center; gap:.4rem;}
+
+  .portrait{
+    aspect-ratio:1/1; border-radius:16px; overflow:hidden;
+    background:linear-gradient(160deg,var(--navy),var(--navy-2));
+    box-shadow:var(--shadow-lg);
+    display:grid; place-items:center; color:#fff; position:relative;
+  }
+  .portrait .initials{font-family:var(--serif); font-size:4.5rem; font-weight:700; opacity:.95;}
+  .portrait .ring{position:absolute; inset:14px; border:1px solid rgba(255,255,255,.35); border-radius:12px; z-index:3;}
+  .portrait img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:2;}
+  .portrait.has-photo .initials{display:none;}
+
+  /* ===== OBJECTIVE BANNER ===== */
+  .objective{background:var(--navy); color:#fff; padding:2.5rem 1.5rem;}
+  .objective .wrap{display:flex; flex-wrap:wrap; gap:1.5rem 2.5rem; align-items:center; justify-content:space-between;}
+  .objective h2{color:#fff; font-size:1.35rem; margin:0;}
+  .objective p{color:rgba(255,255,255,.82); margin:.4rem 0 0; max-width:62ch;}
+  .objective .tag{
+    display:inline-block; background:rgba(176,141,87,.22); color:#e9d7bb;
+    border:1px solid rgba(176,141,87,.5); border-radius:999px;
+    padding:.3rem .8rem; font-size:.78rem; font-weight:600; letter-spacing:.04em; margin-bottom:.7rem;
+  }
+
+  /* ===== ABOUT ===== */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:2.5rem;}
+  .fact-list{list-style:none; padding:0; margin:1rem 0 0; display:grid; gap:.8rem;}
+  .fact-list li{display:flex; gap:.8rem; align-items:flex-start; color:var(--slate); font-size:.95rem;}
+  .fact-list .k{color:var(--navy); font-weight:600; min-width:120px;}
+
+  /* ===== PROJECTS ===== */
+  #projects{background:var(--bg-alt);}
+  .project{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    box-shadow:var(--shadow); overflow:hidden; margin-bottom:2.5rem;
+  }
+  .project-head{padding:2rem 2rem 1.2rem;}
+  .project-head .badge{
+    display:inline-flex; align-items:center; gap:.45rem;
+    background:rgba(176,141,87,.12); color:var(--accent-deep);
+    border-radius:999px; padding:.3rem .75rem; font-size:.74rem; font-weight:700;
+    letter-spacing:.08em; text-transform:uppercase; margin-bottom:.8rem;
+  }
+  .project-head h3{font-size:1.5rem; margin-bottom:.3rem;}
+  .project-head .sub{color:var(--muted); font-size:.92rem; margin:0;}
+  .project-body{padding:0 2rem 1.5rem; display:grid; grid-template-columns:1.1fr .9fr; gap:2rem;}
+  .project-body ul{margin:.4rem 0 0; padding-left:1.1rem; color:var(--slate);}
+  .project-body li{margin-bottom:.6rem;}
+  .project-body li strong{color:var(--ink);}
+
+  .metrics{display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin-top:.4rem;}
+  .metric{
+    background:var(--bg-alt); border:1px solid var(--line); border-radius:11px;
+    padding:.9rem .8rem; text-align:center;
+  }
+  .metric .num{font-family:var(--serif); font-size:1.5rem; color:var(--navy); font-weight:700; line-height:1;}
+  .metric .lbl{font-size:.72rem; color:var(--muted); margin-top:.35rem; line-height:1.3;}
+
+  .toolchips{display:flex; flex-wrap:wrap; gap:.45rem; margin-top:1rem;}
+  .chip{
+    background:var(--bg-alt); border:1px solid var(--line); border-radius:7px;
+    padding:.3rem .65rem; font-size:.8rem; color:var(--slate); font-weight:500;
+  }
+
+  /* Document viewer */
+  .docviewer{border-top:1px solid var(--line); background:var(--bg-alt);}
+  .doctabs{display:flex; gap:.4rem; padding:1rem 2rem 0; flex-wrap:wrap; align-items:center;}
+  .doctab{
+    border:1px solid var(--line); background:#fff; color:var(--slate);
+    border-radius:8px 8px 0 0; padding:.55rem .95rem; font-size:.85rem; font-weight:600;
+    cursor:pointer; border-bottom:none;
+  }
+  .doctab.active{color:var(--navy); box-shadow:inset 0 -3px 0 var(--accent);}
+  .doctab-actions{margin-left:auto; display:flex; gap:.5rem; padding-bottom:.4rem;}
+  .docframe-wrap{padding:0 2rem 2rem;}
+  .docframe{
+    width:100%; height:560px; border:1px solid var(--line); border-radius:0 10px 10px 10px;
+    background:#fff;
+  }
+  .docpane{display:none;}
+  .docpane.active{display:block;}
+  .doc-missing{
+    border:1px dashed var(--accent); background:rgba(176,141,87,.06);
+    border-radius:10px; padding:2rem; text-align:center; color:var(--slate);
+  }
+  .doc-missing code{background:#fff; border:1px solid var(--line); padding:.1rem .4rem; border-radius:5px; font-size:.85em;}
+
+  /* ===== SKILLS ===== */
+  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem;}
+  .skill-card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:1.6rem; box-shadow:var(--shadow);
+  }
+  .skill-card h3{font-size:1.05rem; display:flex; align-items:center; gap:.55rem;}
+  .skill-card .ic{
+    width:30px;height:30px;border-radius:8px;background:rgba(176,141,87,.14);
+    color:var(--accent-deep); display:grid; place-items:center; font-size:1rem;
+  }
+  .skill-card ul{list-style:none; padding:0; margin:.6rem 0 0; display:flex; flex-wrap:wrap; gap:.45rem;}
+  .skill-card ul li{
+    background:var(--bg-alt); border:1px solid var(--line); border-radius:7px;
+    padding:.3rem .65rem; font-size:.85rem; color:var(--slate);
+  }
+  .lang-bars{margin-top:.7rem; display:grid; gap:.7rem;}
+  .lang-bar .row{display:flex; justify-content:space-between; font-size:.85rem; color:var(--slate); margin-bottom:.25rem;}
+  .lang-bar .track{height:7px; background:var(--bg-alt); border-radius:99px; overflow:hidden; border:1px solid var(--line);}
+  .lang-bar .fill{height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-deep));}
+
+  /* ===== TIMELINE ===== */
+  #experience{background:var(--bg-alt);}
+  .tl-cols{display:grid; grid-template-columns:1fr 1fr; gap:3rem;}
+  .timeline{position:relative; padding-left:1.6rem;}
+  .timeline::before{content:""; position:absolute; left:5px; top:6px; bottom:6px; width:2px; background:var(--line);}
+  .tl-item{position:relative; margin-bottom:1.8rem;}
+  .tl-item::before{
+    content:""; position:absolute; left:-1.6rem; top:5px; width:12px; height:12px;
+    border-radius:50%; background:#fff; border:2px solid var(--accent);
+  }
+  .tl-item .when{font-size:.78rem; color:var(--accent-deep); font-weight:600; letter-spacing:.03em;}
+  .tl-item h4{font-family:var(--sans); font-size:1rem; color:var(--navy); margin:.15rem 0 .1rem;}
+  .tl-item .where{font-size:.86rem; color:var(--muted); margin-bottom:.4rem;}
+  .tl-item p{font-size:.9rem; color:var(--slate); margin:0;}
+  .col-title{display:flex; align-items:center; gap:.6rem; margin-bottom:1.4rem;}
+
+  /* ===== EXTRAS (honors / volunteer) ===== */
+  .extras{display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; margin-top:1rem;}
+  .extras ul{list-style:none; padding:0; margin:.5rem 0 0;}
+  .extras li{padding:.7rem 0; border-bottom:1px solid var(--line); color:var(--slate); font-size:.92rem;}
+  .extras li:last-child{border-bottom:0;}
+  .extras li strong{color:var(--navy); font-weight:600;}
+
+  /* ===== CONTACT ===== */
+  #contact{background:var(--navy); color:#fff; text-align:center;}
+  #contact h2{color:#fff;}
+  #contact .lead{color:rgba(255,255,255,.8); margin:0 auto 2rem;}
+  .contact-links{display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;}
+  .contact-links a{
+    display:inline-flex; align-items:center; gap:.55rem;
+    background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16);
+    color:#fff; border-radius:10px; padding:.8rem 1.2rem; font-weight:500; font-size:.93rem;
+  }
+  .contact-links a:hover{background:rgba(255,255,255,.14); text-decoration:none;}
+
+  footer{background:var(--navy); color:rgba(255,255,255,.5); text-align:center; padding:2rem 1.5rem; font-size:.82rem; border-top:1px solid rgba(255,255,255,.08);}
+
+  /* icons */
+  svg.i{width:1em; height:1em; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; vertical-align:-.12em;}
+
+  /* reveal animation */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:860px){
+    .hero-grid,.about-grid,.project-body,.skills-grid,.tl-cols,.extras,.objective .wrap{grid-template-columns:1fr;}
+    .portrait{max-width:280px; margin:0 auto; order:-1;}
+    .nav-links{
+      display:none; position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0; background:#fff; border-bottom:1px solid var(--line);
+      padding:.5rem 1.5rem 1rem;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:.7rem 0; border-bottom:1px solid var(--line);}
+    .nav-actions{margin-left:auto;}
+    .hamburger{display:block;}
+    .metrics{grid-template-columns:repeat(3,1fr);}
+    section{padding:3.5rem 1.25rem;}
+  }
+  @media (max-width:480px){
+    .nav-actions .btn{display:none;}
+    .metric .num{font-size:1.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="mono">FL</span> Frédéric&nbsp;Lu</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" data-en="About" data-fr="Profil">About</a>
+      <a href="#projects" data-en="Projects" data-fr="Projets">Projects</a>
+      <a href="#skills" data-en="Skills" data-fr="Compétences">Skills</a>
+      <a href="#experience" data-en="Experience" data-fr="Parcours">Experience</a>
+      <a href="#contact" data-en="Contact" data-fr="Contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button id="lang-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="lang-fr" onclick="setLang('fr')">FR</button>
+      </div>
+      <a class="btn btn-accent btn-sm" href="documents/Resume_Frederic_Lu.pdf" target="_blank" rel="noopener"
+         data-en="Download CV" data-fr="Télécharger le CV">Download CV</a>
+    </div>
+  </div>
+</header>
+
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<section class="hero" style="padding-bottom:4rem;">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <p class="eyebrow" data-en="Master's in Finance · IMT-BS" data-fr="Master en Finance · IMT-BS">Master's in Finance · IMT-BS</p>
+      <h1>Frédéric Lu</h1>
+      <p class="role"
+         data-en="Aspiring Transaction Services Analyst — Financial Due Diligence"
+         data-fr="Futur Analyste Transaction Services — Due Diligence Financière">Aspiring Transaction Services Analyst — Financial Due Diligence</p>
+      <p class="lead"
+         data-en="Finance Master's student specialised in corporate finance, building rigorous, defensible analysis — from normalised EBITDA and net-debt bridges to credit-risk models in Python. Trilingual (FR · EN · 中文) and built for high-stakes, deadline-driven deal work."
+         data-fr="Étudiant en Master Finance spécialisé en finance d'entreprise, je construis des analyses rigoureuses et défendables — de l'EBITDA normatif et des ponts de dette nette aux modèles de risque de crédit en Python. Trilingue (FR · EN · 中文) et taillé pour le travail en deal sous pression et délais serrés.">Finance Master's student…</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects" data-en="View my work" data-fr="Voir mes projets">View my work</a>
+        <a class="btn btn-ghost" href="#contact" data-en="Get in touch" data-fr="Me contacter">Get in touch</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg class="i" viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-en="Paris, France · open to relocation" data-fr="Paris, France · ouvert à la mobilité">Paris, France · open to relocation</span></span>
+        <span><svg class="i" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          <a href="mailto:lufred11.lu2002@gmail.com">lufred11.lu2002@gmail.com</a></span>
+      </div>
+    </div>
+    <div class="portrait reveal">
+      <!-- Drop a square headshot named me.jpg next to index.html. If it's missing, the FL monogram shows automatically. -->
+      <img src="me.jpg" alt="Frédéric Lu" onload="this.parentElement.classList.add('has-photo')"
+           onerror="this.remove()" />
+      <span class="ring"></span>
+      <span class="initials">FL</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OBJECTIVE BANNER ============ -->
+<section class="objective" style="padding:2.6rem 1.5rem;" id="objective">
+  <div class="wrap">
+    <div>
+      <span class="tag" data-en="Currently seeking" data-fr="Recherche actuelle">Currently seeking</span>
+      <h2 data-en="6-month end-of-studies internship — Transaction Services / Financial Due Diligence"
+          data-fr="Stage de fin d'études de 6 mois — Transaction Services / Due Diligence Financière">6-month end-of-studies internship — Transaction Services</h2>
+      <p data-en="Available from January 2027 · Paris &amp; international · Financial due diligence, M&amp;A support, financial modeling. I bring deal-screening experience (270+ meetings, PitchBook), hands-on TS analysis and strong financial-modeling fundamentals."
+         data-fr="Disponible à partir de janvier 2027 · Paris &amp; international · Due diligence financière, support M&amp;A, modélisation financière. J'apporte une expérience de screening de cibles (270+ RDV, PitchBook), une analyse TS pratique et de solides fondamentaux en modélisation financière.">Available from January 2027…</p>
+    </div>
+    <a class="btn btn-accent" href="#contact" data-en="Let's talk" data-fr="Échangeons">Let's talk</a>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <p class="eyebrow" data-en="About" data-fr="Profil">About</p>
+      <h2 data-en="Rigour, analysis, and a taste for the deal" data-fr="Rigueur, analyse et goût du deal">Rigour, analysis, and a taste for the deal</h2>
+      <p data-en="I'm a Master's student in the Grande École programme at Institut Mines-Télécom Business School (Finance specialisation, English Track), currently on academic exchange at National Taiwan University. My focus is corporate finance and transaction services: understanding what a business is really worth and where the risks hide."
+         data-fr="Je suis étudiant en Programme Grande École à l'Institut Mines-Télécom Business School (spécialisation Finance, English Track), actuellement en échange académique à National Taiwan University. Mon focus : la finance d'entreprise et les transaction services — comprendre ce que vaut réellement une entreprise et où se cachent les risques.">About paragraph…</p>
+      <p data-en="Two years of work-study at Choose Paris Region taught me to qualify and screen investment targets at speed and to turn messy data into decisions. I pair that commercial instinct with technical depth — financial modeling in Excel and credit-risk modeling in Python."
+         data-fr="Deux ans d'alternance à Choose Paris Region m'ont appris à qualifier et screener des cibles d'investissement avec rapidité et à transformer des données brutes en décisions. J'associe cet instinct commercial à une profondeur technique — modélisation financière sur Excel et modélisation du risque de crédit en Python.">About paragraph 2…</p>
+    </div>
+    <div class="reveal">
+      <ul class="fact-list">
+        <li><span class="k" data-en="Education" data-fr="Formation">Education</span>
+            <span data-en="Grande École — Finance, IMT-BS (English Track), 2025–2027" data-fr="Grande École — Finance, IMT-BS (English Track), 2025–2027">Grande École — Finance, IMT-BS</span></li>
+        <li><span class="k" data-en="Exchange" data-fr="Échange">Exchange</span>
+            <span data-en="National Taiwan University — Finance, Feb–Jul 2026" data-fr="National Taiwan University — Finance, fév.–juil. 2026">National Taiwan University, 2026</span></li>
+        <li><span class="k" data-en="Languages" data-fr="Langues">Languages</span>
+            <span data-en="French (native) · English (TOEIC 985/990) · Chinese" data-fr="Français (natif) · Anglais (TOEIC 985/990) · Chinois">FR · EN · ZH</span></li>
+        <li><span class="k" data-en="Focus" data-fr="Domaine">Focus</span>
+            <span data-en="Transaction Services · Financial Due Diligence · M&amp;A" data-fr="Transaction Services · Due Diligence Financière · M&amp;A">Transaction Services · DD · M&amp;A</span></li>
+        <li><span class="k" data-en="Toolkit" data-fr="Outils">Toolkit</span>
+            <span data-en="Excel · PowerPoint · PitchBook · Python" data-fr="Excel · PowerPoint · PitchBook · Python">Excel · PitchBook · Python</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects">
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:3rem;">
+      <p class="eyebrow" data-en="Selected Work" data-fr="Projets Sélectionnés">Selected Work</p>
+      <h2 data-en="Two projects that define my profile" data-fr="Deux projets qui définissent mon profil">Two projects that define my profile</h2>
+      <p class="lead" data-en="A real Transaction Services due diligence, and a Python credit-risk model. Browse the actual deliverables below."
+         data-fr="Une due diligence Transaction Services réelle, et un modèle de risque de crédit en Python. Parcourez les livrables ci-dessous.">A real TS due diligence and a Python credit-risk model.</p>
+    </div>
+
+    <!-- PROJECT 1 — MOULINVEST -->
+    <article class="project reveal">
+      <div class="project-head">
+        <span class="badge"><svg class="i" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
+          <span data-en="Transaction Services · Due Diligence" data-fr="Transaction Services · Due Diligence">Transaction Services · Due Diligence</span></span>
+        <h3 data-en="Financial Due Diligence — MOULINVEST (Euronext Growth)"
+            data-fr="Due Diligence Financière — MOULINVEST (Euronext Growth)">Financial Due Diligence — MOULINVEST</h3>
+        <p class="sub" data-en="TS analysis · DD memo &amp; 5-tab Excel model · 2026"
+           data-fr="Analyse TS · mémo de DD &amp; modèle Excel à 5 onglets · 2026">TS analysis · DD memo &amp; Excel model · 2026</p>
+      </div>
+      <div class="project-body">
+        <div>
+          <p style="color:var(--slate); font-size:.95rem;"
+             data-en="A complete financial due diligence on a listed company, replicating the work of a TS analyst: separate sustainable performance from accounting noise and pressure-test the valuation."
+             data-fr="Une due diligence financière complète sur une société cotée, reproduisant le travail d'un analyste TS : isoler la performance soutenable du bruit comptable et challenger la valorisation.">A complete financial due diligence…</p>
+          <ul>
+            <li><strong data-en="EBITDA normalisation:" data-fr="Normalisation de l'EBITDA :">EBITDA normalisation:</strong>
+              <span data-en="identified and adjusted non-recurring items to build a defensible normalised EBITDA."
+                    data-fr="identification et retraitement des éléments non récurrents pour un EBITDA normatif défendable.">…</span></li>
+            <li><strong data-en="Normative WC &amp; adjusted net debt:" data-fr="BFR normatif &amp; dette nette ajustée :">Normative WC &amp; adjusted net debt:</strong>
+              <span data-en="working capital in days of revenue, identification of debt-like items, and the EV→equity-value bridge."
+                    data-fr="BFR en jours de CA, identification des éléments « debt-like » et construction du pont EV→valeur des fonds propres.">…</span></li>
+            <li><strong data-en="Business plan &amp; red flags:" data-fr="Business plan &amp; red flags :">Business plan &amp; red flags:</strong>
+              <span data-en="critique of growth and margin assumptions; identification of risks affecting the valuation."
+                    data-fr="critique des hypothèses de croissance et de marges ; identification des risques affectant la valorisation.">…</span></li>
+            <li><strong data-en="Deliverable:" data-fr="Livrable :">Deliverable:</strong>
+              <span data-en="a structured DD memo plus a five-tab Excel model (inputs, adjusted P&amp;L, working capital, net debt, EV/equity bridge)."
+                    data-fr="un mémo de DD structuré et un modèle Excel à cinq onglets (inputs, P&amp;L retraité, BFR, dette nette, bridge EV/equity).">…</span></li>
+          </ul>
+          <div class="toolchips">
+            <span class="chip">Excel</span><span class="chip">Financial Modeling</span>
+            <span class="chip" data-en="Valuation" data-fr="Valorisation">Valuation</span>
+            <span class="chip" data-en="DD Memo" data-fr="Mémo DD">DD Memo</span>
+          </div>
+        </div>
+        <div>
+          <div class="metrics">
+            <div class="metric"><div class="num">5</div><div class="lbl" data-en="model tabs" data-fr="onglets du modèle">model tabs</div></div>
+            <div class="metric"><div class="num">EBITDA</div><div class="lbl" data-en="normalised" data-fr="normalisé">normalised</div></div>
+            <div class="metric"><div class="num">EV→Eq</div><div class="lbl" data-en="value bridge" data-fr="pont de valeur">value bridge</div></div>
+          </div>
+          <p style="font-size:.84rem; color:var(--muted); margin-top:1rem;"
+             data-en="Listed on Euronext Growth. Browse the memo and the model below, or download the originals."
+             data-fr="Cotée sur Euronext Growth. Parcourez le mémo et le modèle ci-dessous, ou téléchargez les originaux.">Browse the deliverables below.</p>
+        </div>
+      </div>
+
+      <!-- DOCUMENT VIEWER -->
+      <div class="docviewer">
+        <div class="doctabs">
+          <button class="doctab active" data-target="m-memo" data-en="📄 DD Memo" data-fr="📄 Mémo DD">📄 DD Memo</button>
+          <button class="doctab" data-target="m-model" data-en="📊 Excel Model" data-fr="📊 Modèle Excel">📊 Excel Model</button>
+          <div class="doctab-actions">
+            <a class="btn btn-ghost btn-sm" id="dl-memo" href="documents/Moulinvest_DD_Memo.pdf" download
+               data-en="⬇ Memo (PDF)" data-fr="⬇ Mémo (PDF)">⬇ Memo (PDF)</a>
+            <a class="btn btn-ghost btn-sm" id="dl-model" href="documents/Moulinvest_Model.pdf" download
+               data-en="⬇ Model (PDF)" data-fr="⬇ Modèle (PDF)">⬇ Model (PDF)</a>
+          </div>
+        </div>
+        <div class="docframe-wrap">
+          <!-- MEMO PANE -->
+          <div class="docpane active" id="m-memo">
+            <iframe class="docframe" src="documents/Moulinvest_DD_Memo.pdf#view=FitH" title="Moulinvest DD Memo"></iframe>
+          </div>
+          <!-- MODEL PANE -->
+          <div class="docpane" id="m-model">
+            <iframe class="docframe" src="documents/Moulinvest_Model.pdf#view=FitH" title="Moulinvest Model (PDF preview)"></iframe>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 2 — CREDIT RISK -->
+    <article class="project reveal">
+      <div class="project-head">
+        <span class="badge"><svg class="i" viewBox="0 0 24 24"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+          <span data-en="Quantitative · Python" data-fr="Quantitatif · Python">Quantitative · Python</span></span>
+        <h3 data-en="Credit-Risk Modeling — Loan Interest-Rate Prediction"
+            data-fr="Modélisation du Risque de Crédit — Prédiction du Taux d'Intérêt">Credit-Risk Modeling — Loan Interest-Rate Prediction</h3>
+        <p class="sub" data-en="Linear regression · borrower &amp; historical credit data · Python"
+           data-fr="Régression linéaire · données emprunteurs &amp; historique de crédit · Python">Linear regression · Python</p>
+      </div>
+      <div class="project-body">
+        <div>
+          <p style="color:var(--slate); font-size:.95rem;"
+             data-en="A linear-regression model that predicts the interest rate offered on a loan from borrower profiles and historical credit data — translating risk into price."
+             data-fr="Un modèle de régression linéaire qui prédit le taux d'intérêt proposé sur un prêt à partir de profils d'emprunteurs et de données de crédit historiques — traduire le risque en prix.">A linear-regression model predicting loan interest rates.</p>
+          <ul>
+            <li><strong data-en="Data &amp; features:" data-fr="Données &amp; variables :">Data &amp; features:</strong>
+              <span data-en="borrower profile and historical credit variables (e.g. income, debt-to-income, credit history, loan characteristics)."
+                    data-fr="variables de profil emprunteur et d'historique de crédit (revenu, taux d'endettement, historique de crédit, caractéristiques du prêt).">…</span></li>
+            <li><strong data-en="Method:" data-fr="Méthode :">Method:</strong>
+              <span data-en="data cleaning, feature engineering, train/test split, and an interpretable linear-regression model."
+                    data-fr="nettoyage des données, feature engineering, séparation train/test, et un modèle de régression linéaire interprétable.">…</span></li>
+            <li><strong data-en="Why it matters:" data-fr="Pourquoi c'est utile :">Why it matters:</strong>
+              <span data-en="connects statistical modeling to a concrete pricing decision — the same risk-to-value logic used in finance."
+                    data-fr="relie la modélisation statistique à une décision de pricing concrète — la même logique risque-valeur qu'en finance.">…</span></li>
+          </ul>
+          <div class="toolchips">
+            <span class="chip">Python</span><span class="chip">pandas</span>
+            <span class="chip">scikit-learn</span><span class="chip" data-en="Linear Regression" data-fr="Régression Linéaire">Linear Regression</span>
+          </div>
+        </div>
+        <div>
+          <div class="metrics">
+            <!-- TODO: replace with your real metrics -->
+            <div class="metric"><div class="num">R²&nbsp;—</div><div class="lbl" data-en="fill in score" data-fr="à compléter">fill in</div></div>
+            <div class="metric"><div class="num">RMSE</div><div class="lbl" data-en="fill in error" data-fr="à compléter">fill in</div></div>
+            <div class="metric"><div class="num">—</div><div class="lbl" data-en="key driver" data-fr="variable clé">key driver</div></div>
+          </div>
+          <p style="font-size:.84rem; color:var(--muted); margin-top:1rem;"
+             data-en="Send me the notebook/metrics and I'll plug in your real R², RMSE and top drivers — and link the GitHub repo."
+             data-fr="Envoie-moi le notebook/les métriques et j'intègre tes vrais R², RMSE et variables clés — et le lien GitHub.">Add your real metrics here.</p>
+          <a class="btn btn-ghost btn-sm" href="#" id="repo-link" style="margin-top:.4rem;"
+             data-en="View on GitHub →" data-fr="Voir sur GitHub →">View on GitHub →</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:3rem;">
+      <p class="eyebrow" data-en="Capabilities" data-fr="Compétences">Capabilities</p>
+      <h2 data-en="Skills &amp; tools" data-fr="Compétences &amp; outils">Skills &amp; tools</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h3><span class="ic">💼</span><span data-en="Finance &amp; Transaction Services" data-fr="Finance &amp; Transaction Services">Finance &amp; Transaction Services</span></h3>
+        <ul>
+          <li data-en="Financial due diligence" data-fr="Due diligence financière">Financial due diligence</li>
+          <li data-en="EBITDA normalisation" data-fr="Normalisation EBITDA">EBITDA normalisation</li>
+          <li data-en="Net-debt &amp; WC analysis" data-fr="Analyse dette nette &amp; BFR">Net-debt &amp; WC analysis</li>
+          <li data-en="Valuation / EV bridge" data-fr="Valorisation / pont EV">Valuation / EV bridge</li>
+          <li data-en="Financial modeling" data-fr="Modélisation financière">Financial modeling</li>
+          <li data-en="Target screening (PitchBook)" data-fr="Screening de cibles (PitchBook)">Target screening</li>
+          <li data-en="Financial analysis" data-fr="Analyse financière">Financial analysis</li>
+        </ul>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="ic">🛠️</span><span data-en="Tools &amp; Technical" data-fr="Outils &amp; Technique">Tools &amp; Technical</span></h3>
+        <ul>
+          <li>Excel (avancé)</li><li>PowerPoint</li><li>PitchBook</li><li>Word</li>
+          <li>Python</li><li>pandas</li><li>scikit-learn</li>
+          <li data-en="PivotTables / VLOOKUP / INDEX-MATCH" data-fr="TCD / RECHERCHEV / INDEX-EQUIV">PivotTables / VLOOKUP</li>
+        </ul>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="ic">🗣️</span><span data-en="Languages" data-fr="Langues">Languages</span></h3>
+        <div class="lang-bars">
+          <div class="lang-bar"><div class="row"><span data-en="French — Native" data-fr="Français — Langue maternelle">French — Native</span></div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+          <div class="lang-bar"><div class="row"><span data-en="English — TOEIC 985/990" data-fr="Anglais — TOEIC 985/990">English — TOEIC 985/990</span></div><div class="track"><div class="fill" style="width:96%"></div></div></div>
+          <div class="lang-bar"><div class="row"><span data-en="Chinese (中文)" data-fr="Chinois (中文)">Chinese (中文)</span></div><div class="track"><div class="fill" style="width:55%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><span class="ic">🎖️</span><span data-en="Certifications &amp; Strengths" data-fr="Certifications &amp; Atouts">Certifications &amp; Strengths</span></h3>
+        <ul>
+          <li>TOEIC 985/990</li><li>Codecademy Python</li>
+          <li data-en="Rigour" data-fr="Rigueur">Rigour</li>
+          <li data-en="Analytical mindset" data-fr="Esprit d'analyse">Analytical mindset</li>
+          <li data-en="Strong writing" data-fr="Capacités rédactionnelles">Strong writing</li>
+          <li data-en="Teamwork" data-fr="Travail en équipe">Teamwork</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE & EDUCATION ============ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="center reveal" style="margin-bottom:3rem;">
+      <p class="eyebrow" data-en="Background" data-fr="Parcours">Background</p>
+      <h2 data-en="Experience &amp; education" data-fr="Expérience &amp; formation">Experience &amp; education</h2>
+    </div>
+    <div class="tl-cols">
+      <!-- EXPERIENCE -->
+      <div class="reveal">
+        <div class="col-title"><svg class="i" viewBox="0 0 24 24" style="font-size:1.3rem;color:var(--accent-deep)"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <h3 style="margin:0" data-en="Experience" data-fr="Expérience">Experience</h3></div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="when" data-en="Sep 2023 – Jul 2025" data-fr="Sep. 2023 – Juil. 2025">Sep 2023 – Jul 2025</div>
+            <h4 data-en="Investment Target Screening &amp; Qualification (Work-study)" data-fr="Screening &amp; Qualification de Cibles d'Investissement (Alternance)">Investment Target Screening (Work-study)</h4>
+            <div class="where">Choose Paris Region — Saint-Ouen, France</div>
+            <p data-en="Qualified Fintech &amp; Healthtech targets by funding stage (Seed→Series C), revenue, headcount and competitive positioning via PitchBook. Cleaned and structured large datasets for CRM import (VLOOKUP, INDEX/MATCH, PivotTables). Ran meetings in English with international startups. Impact: 270+ meetings, 5 projects won, 15 jobs created."
+               data-fr="Qualification de cibles Fintech &amp; Healthtech par stade de financement (Seed→Series C), chiffre d'affaires, effectifs et positionnement concurrentiel via PitchBook. Nettoyage et structuration de fichiers volumineux pour import CRM (RECHERCHEV, INDEX/EQUIV, TCD). Animation de RDV en anglais avec des start-ups internationales. Impact : 270+ RDV, 5 projets gagnés, 15 emplois créés.">…</p>
+          </div>
+          <div class="tl-item">
+            <div class="when" data-en="Dec 2021 – Dec 2022" data-fr="Déc. 2021 – Déc. 2022">Dec 2021 – Dec 2022</div>
+            <h4 data-en="Tutor — Accounting &amp; Management Control (Part-time)" data-fr="Tuteur — Comptabilité &amp; Contrôle de Gestion (Temps partiel)">Tutor — Accounting &amp; Management Control</h4>
+            <div class="where">UPEC — Créteil, France</div>
+            <p data-en="Led two weekly sessions for struggling first-year students on accounting fundamentals (journal entries, bank reconciliations) and management control (cost analysis, budgeting). Impact: 12 students supported, all passing above 14/20."
+               data-fr="Animation de deux séances hebdomadaires pour des étudiants de 1ʳᵉ année en difficulté sur les fondamentaux comptables (écritures de journal, rapprochements bancaires) et le contrôle de gestion (analyse des coûts, budgétisation). Impact : 12 étudiants accompagnés, tous validés au-dessus de 14/20.">…</p>
+          </div>
+        </div>
+
+        <div class="col-title" style="margin-top:2.5rem;"><svg class="i" viewBox="0 0 24 24" style="font-size:1.3rem;color:var(--accent-deep)"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <h3 style="margin:0" data-en="Honors &amp; Volunteer" data-fr="Distinctions &amp; Bénévolat">Honors &amp; Volunteer</h3></div>
+        <div class="extras" style="grid-template-columns:1fr;">
+          <ul>
+            <li><strong data-en="Semi-finalist" data-fr="Demi-finaliste">Semi-finalist</strong> —
+              <span data-en="Negotiation Contest, BUT TC France network (Feb 2024)" data-fr="Concours de Négociation, Réseaux BUT TC France (fév. 2024)">Negotiation Contest (Feb 2024)</span></li>
+            <li><strong data-en="Class delegate" data-fr="Délégué de classe">Class delegate</strong> —
+              <span data-en="English Track cohort (Oct 2025)" data-fr="promotion English Track (oct. 2025)">English Track cohort (Oct 2025)</span></li>
+            <li><strong data-en="Founder &amp; President" data-fr="Fondateur &amp; Président">Founder &amp; President</strong> —
+              <span data-en="UPEC international students' association — led 40 multicultural members, raised €7,000 in partnerships (2022–2023)" data-fr="association des étudiants internationaux de l'UPEC — management de 40 membres multiculturels, 7 000 € levés en partenariats (2022–2023)">UPEC int'l students' association</span></li>
+            <li><strong data-en="Volleyball setter" data-fr="Passeur volley-ball">Volleyball setter</strong> —
+              <span data-en="ESV departmental team, weekly competition (2018–2022)" data-fr="ESV équipe départementale, compétition hebdomadaire (2018–2022)">ESV departmental team</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="reveal">
+        <div class="col-title"><svg class="i" viewBox="0 0 24 24" style="font-size:1.3rem;color:var(--accent-deep)"><path d="M22 10 12 5 2 10l10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <h3 style="margin:0" data-en="Education" data-fr="Formation">Education</h3></div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="when" data-en="Feb 2026 – Jul 2026" data-fr="Fév. 2026 – Juil. 2026">Feb 2026 – Jul 2026</div>
+            <h4>National Taiwan University — Taipei</h4>
+            <div class="where" data-en="Academic exchange · Finance Department" data-fr="Échange académique · Département Finance">Academic exchange · Finance</div>
+            <p data-en="Coursework: Managing Global Acquisition &amp; Restructuring, Venture Capital &amp; Private Equity, Advanced Chinese."
+               data-fr="Cours : Managing Global Acquisition &amp; Restructuration, Venture Capital &amp; Private Equity, Chinois avancé.">…</p>
+          </div>
+          <div class="tl-item">
+            <div class="when" data-en="Sep 2025 – Jun 2027" data-fr="Sep. 2025 – Juin 2027">Sep 2025 – Jun 2027</div>
+            <h4>Institut Mines-Télécom Business School — Évry</h4>
+            <div class="where" data-en="Grande École Programme · Finance specialisation · English Track" data-fr="Programme Grande École · Spécialisation Finance · English Track">Grande École · Finance · English Track</div>
+            <p data-en="Coursework: Financial Analysis, Investments (Corporate Finance), Structured Finance, Financial Modeling."
+               data-fr="Cours : Analyse Financière, Investissements (Corporate Finance), Finance Structurée, Modélisation Financière.">…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap reveal">
+    <p class="eyebrow" style="color:var(--accent)" data-en="Contact" data-fr="Contact">Contact</p>
+    <h2 data-en="Let's discuss your Transaction Services internship" data-fr="Parlons de votre stage en Transaction Services">Let's discuss your Transaction Services internship</h2>
+    <p class="lead" data-en="Available for a 6-month end-of-studies internship from January 2027. I'd be glad to walk you through the Moulinvest model or my Python work."
+       data-fr="Disponible pour un stage de fin d'études de 6 mois à partir de janvier 2027. Avec plaisir pour vous présenter le modèle Moulinvest ou mon travail en Python.">Available from January 2027.</p>
+    <div class="contact-links">
+      <a href="mailto:lufred11.lu2002@gmail.com"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg> lufred11.lu2002@gmail.com</a>
+      <a href="tel:+33650696469"><svg class="i" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +33 6 50 69 64 69</a>
+      <a href="https://www.linkedin.com/in/lu-frederic" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn</a>
+      <a href="documents/Resume_Frederic_Lu.pdf" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg> <span data-en="Download CV" data-fr="Télécharger le CV">Download CV</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Frédéric Lu ·
+    <span data-en="Built for Transaction Services recruiters." data-fr="Conçu pour les recruteurs Transaction Services.">Built for Transaction Services recruiters.</span>
+  </div>
+</footer>
+
+<script>
+  /* ---------- i18n ---------- */
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      const val = el.getAttribute('data-'+lang);
+      if(val!==null) el.innerHTML = val;
+    });
+    document.getElementById('lang-en').classList.toggle('active', lang==='en');
+    document.getElementById('lang-fr').classList.toggle('active', lang==='fr');
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  (function(){
+    let lang = 'en';
+    try{
+      const stored = localStorage.getItem('lang');
+      if(stored){ lang = stored; }
+      else if((navigator.language||'').toLowerCase().startsWith('fr')){ lang = 'fr'; }
+    }catch(e){}
+    setLang(lang==='fr'?'fr':'en');
+  })();
+
+  /* ---------- document tabs ---------- */
+  document.querySelectorAll('.doctabs').forEach(group=>{
+    const tabs = group.querySelectorAll('.doctab');
+    tabs.forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        const article = tab.closest('.project');
+        article.querySelectorAll('.doctab').forEach(t=>t.classList.remove('active'));
+        article.querySelectorAll('.docpane').forEach(p=>p.classList.remove('active'));
+        tab.classList.add('active');
+        const pane = article.querySelector('#'+tab.dataset.target);
+        if(pane) pane.classList.add('active');
+      });
+    });
+  });
+
+  /* ---------- mobile nav ---------- */
+  const ham = document.getElementById('hamburger');
+  const links = document.getElementById('navLinks');
+  ham.addEventListener('click', ()=> links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> links.classList.remove('open')));
+
+  /* ---------- reveal on scroll ---------- */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
