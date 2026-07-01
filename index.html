@@ -516,32 +516,39 @@
              data-fr="Un modèle de régression linéaire qui prédit le taux d'intérêt proposé sur un prêt à partir de profils d'emprunteurs et de données de crédit historiques — traduire le risque en prix.">A linear-regression model predicting loan interest rates.</p>
           <ul>
             <li><strong data-en="Data &amp; features:" data-fr="Données &amp; variables :">Data &amp; features:</strong>
-              <span data-en="borrower profile and historical credit variables (e.g. income, debt-to-income, credit history, loan characteristics)."
-                    data-fr="variables de profil emprunteur et d'historique de crédit (revenu, taux d'endettement, historique de crédit, caractéristiques du prêt).">…</span></li>
+              <span data-en="loan amount, employment length, debt-to-income (DTI), revolving-credit utilisation, loan purpose and credit grade — used to predict the loan's interest rate."
+                    data-fr="montant du prêt, ancienneté professionnelle, taux d'endettement (DTI), taux d'utilisation du crédit renouvelable, objet du prêt et grade de crédit — pour prédire le taux d'intérêt du prêt.">…</span></li>
             <li><strong data-en="Method:" data-fr="Méthode :">Method:</strong>
-              <span data-en="data cleaning, feature engineering, train/test split, and an interpretable linear-regression model."
-                    data-fr="nettoyage des données, feature engineering, séparation train/test, et un modèle de régression linéaire interprétable.">…</span></li>
+              <span data-en="data cleaning, feature engineering (one-hot encoding of purpose &amp; grade), train/test split, and an interpretable OLS linear regression — benchmarked against a Random Forest."
+                    data-fr="nettoyage des données, feature engineering (encodage one-hot de l'objet &amp; du grade), séparation train/test, et une régression linéaire OLS interprétable — comparée à un Random Forest.">…</span></li>
+            <li><strong data-en="Result:" data-fr="Résultat :">Result:</strong>
+              <span data-en="R² = 0.907 with RMSE = 0.065. Credit grade and revolving-credit utilisation (revol_util) are the strongest drivers of the rate."
+                    data-fr="R² = 0,907 pour un RMSE = 0,065. Le grade de crédit et le taux d'utilisation du crédit renouvelable (revol_util) sont les facteurs les plus déterminants du taux.">…</span></li>
             <li><strong data-en="Why it matters:" data-fr="Pourquoi c'est utile :">Why it matters:</strong>
-              <span data-en="connects statistical modeling to a concrete pricing decision — the same risk-to-value logic used in finance."
+              <span data-en="connects statistical modeling to a concrete pricing decision — the same risk-to-value logic used across finance."
                     data-fr="relie la modélisation statistique à une décision de pricing concrète — la même logique risque-valeur qu'en finance.">…</span></li>
           </ul>
           <div class="toolchips">
             <span class="chip">Python</span><span class="chip">pandas</span>
-            <span class="chip">scikit-learn</span><span class="chip" data-en="Linear Regression" data-fr="Régression Linéaire">Linear Regression</span>
+            <span class="chip">scikit-learn</span><span class="chip">statsmodels</span>
+            <span class="chip" data-en="Linear Regression" data-fr="Régression Linéaire">Linear Regression</span>
           </div>
         </div>
         <div>
           <div class="metrics">
-            <!-- TODO: replace with your real metrics -->
-            <div class="metric"><div class="num">R²&nbsp;—</div><div class="lbl" data-en="fill in score" data-fr="à compléter">fill in</div></div>
-            <div class="metric"><div class="num">RMSE</div><div class="lbl" data-en="fill in error" data-fr="à compléter">fill in</div></div>
-            <div class="metric"><div class="num">—</div><div class="lbl" data-en="key driver" data-fr="variable clé">key driver</div></div>
+            <div class="metric"><div class="num">0.907</div><div class="lbl" data-en="R² (variance explained)" data-fr="R² (variance expliquée)">R²</div></div>
+            <div class="metric"><div class="num">0.065</div><div class="lbl">RMSE</div></div>
+            <div class="metric"><div class="num" data-en="Grade" data-fr="Grade">Grade</div><div class="lbl" data-en="top rate driver" data-fr="1er facteur de taux">top driver</div></div>
           </div>
           <p style="font-size:.84rem; color:var(--muted); margin-top:1rem;"
-             data-en="Send me the notebook/metrics and I'll plug in your real R², RMSE and top drivers — and link the GitHub repo."
-             data-fr="Envoie-moi le notebook/les métriques et j'intègre tes vrais R², RMSE et variables clés — et le lien GitHub.">Add your real metrics here.</p>
-          <a class="btn btn-ghost btn-sm" href="#" id="repo-link" style="margin-top:.4rem;"
-             data-en="View on GitHub →" data-fr="Voir sur GitHub →">View on GitHub →</a>
+             data-en="Full analysis — descriptive stats, preprocessing, model comparison and an ethics section — in the notebook and slide deck."
+             data-fr="Analyse complète — statistiques descriptives, préparation des données, comparaison de modèles et une partie éthique — dans le notebook et le support de présentation.">Full analysis in the notebook and slides.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem;">
+            <a class="btn btn-primary btn-sm" href="https://github.com/fredericlu-portfolio/fredericlu-portfolio.github.io/blob/main/FredericLu_Credit%20Risk%20Analysis.ipynb" target="_blank" rel="noopener"
+               data-en="View notebook on GitHub →" data-fr="Voir le notebook sur GitHub →">View notebook on GitHub →</a>
+            <a class="btn btn-ghost btn-sm" href="documents/FredericLu_Credit%20Risk%20Analysis.pdf" target="_blank" rel="noopener"
+               data-en="📊 Slides (PDF)" data-fr="📊 Présentation (PDF)">📊 Slides (PDF)</a>
+          </div>
         </div>
       </div>
     </article>
