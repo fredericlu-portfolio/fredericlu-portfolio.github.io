@@ -156,7 +156,12 @@
 
   /* ===== OBJECTIVE BANNER ===== */
   .objective{background:var(--navy); color:#fff; padding:2.5rem 1.5rem;}
-  .objective .wrap{display:flex; flex-wrap:wrap; gap:1.5rem 2.5rem; align-items:center; justify-content:space-between;}
+  .objective .wrap{display:flex; flex-wrap:wrap; gap:1.8rem 2.5rem; align-items:center; justify-content:space-between;}
+  .obj-text{flex:1 1 430px; min-width:0;}
+  .obj-text .btn{margin-top:.2rem;}
+  .obj-photo{flex:1 1 360px; max-width:480px; margin:0;}
+  .obj-photo img{width:100%; border-radius:12px; border:1px solid rgba(255,255,255,.18); box-shadow:0 12px 34px rgba(0,0,0,.30); display:block;}
+  .obj-photo figcaption{margin-top:.5rem; text-align:center; font-size:.72rem; letter-spacing:.03em; color:rgba(255,255,255,.6);}
   .objective h2{color:#fff; font-size:1.35rem; margin:0;}
   .objective p{color:rgba(255,255,255,.82); margin:.4rem 0 0; max-width:62ch;}
   .objective .tag{
@@ -378,14 +383,18 @@
 <!-- ============ OBJECTIVE BANNER ============ -->
 <section class="objective" style="padding:2.6rem 1.5rem;" id="objective">
   <div class="wrap">
-    <div>
+    <div class="obj-text">
       <span class="tag" data-en="Currently" data-fr="Actuellement">Currently</span>
       <h2 data-en="Transaction Services Intern @ RSM France"
           data-fr="Stagiaire Transaction Services @ RSM France">Transaction Services Intern @ RSM France</h2>
       <p data-en="On a gap-year placement at RSM France (Nantes) since September 2026 — historical financial analysis of SMEs &amp; mid-caps, normalised EBITDA / working capital / adjusted net debt, and due-diligence reporting across buy-side and sell-side deals. Available for my next Transaction Services internship from March 2027 · Paris &amp; international."
          data-fr="En césure chez RSM France (Nantes) depuis septembre 2026 — analyse financière historique de PME &amp; ETI, EBITDA / BFR normatifs et dette nette ajustée, et rédaction de rapports de due diligence sur des missions buy-side et sell-side. Disponible pour mon prochain stage Transaction Services dès mars 2027 · Paris &amp; international.">RSM France — available from March 2027…</p>
+      <a class="btn btn-accent" href="#contact" data-en="Let's talk" data-fr="Échangeons">Let's talk</a>
     </div>
-    <a class="btn btn-accent" href="#contact" data-en="Let's talk" data-fr="Échangeons">Let's talk</a>
+    <figure class="obj-photo">
+      <img src="documents/rsm-onboarding.jpg" alt="RSM France — intégration des nouveaux collaborateurs" loading="lazy" />
+      <figcaption data-en="RSM France — new-joiner onboarding · 2026" data-fr="RSM France — intégration des nouveaux collaborateurs · 2026">RSM France · 2026</figcaption>
+    </figure>
   </div>
 </section>
 
